@@ -1,4 +1,4 @@
-INSERT INTO MEMBRE VALUES
+INSERT INTO UTILISATEUR VALUES
 (1, "admin", "admin", "Admin", "Admin", "admin", "aaaa@aaa.com", "ABC1234", 0),
 (2, "orianne", "orianne", "Gruber", "Orianne", "vice", "orianne@orianne.com", "DEF5678", 0),
 (3, "deborah", "deborah", "Ganin", "Deborah", "pdg", "deborah@deborah.com", "GHI9102", 0);
