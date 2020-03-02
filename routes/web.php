@@ -11,8 +11,8 @@
 |
 */
 
-Route::get('/accueil', function () {
-    return view('accueil');
+Route::get('/', function () {
+    return view('welcome');
 });
 
 Route::get('/bonjour/{name?}', function ($name = null) {
