@@ -15,10 +15,6 @@ class CreatePlacesTable extends Migration
     {
         Schema::create('places', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('place_id')->unsigned();
-            $table->foreign('place_id')
-                ->references('id')->on('reservations')
-                ->onDelete('cascade');
             $table->integer('num_place');
             $table->boolean('etat_place');
             $table->timestamps();

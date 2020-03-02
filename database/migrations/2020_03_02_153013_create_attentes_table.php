@@ -15,8 +15,8 @@ class CreateAttentesTable extends Migration
     {
         Schema::create('attentes', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('attente_id')->unsigned();
-            $table->foreign('attente_id')
+            $table->integer('users_id')->unsigned();
+            $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
             $table->boolean('priorite_attente');

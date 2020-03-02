@@ -19,6 +19,10 @@ class CreateReservationsTable extends Migration
             $table->foreign('users_id')
                 ->references('id')->on('users')
                 ->onDelete('cascade');
+            $table->integer('place_id')->unsigned();
+            $table->foreign('place_id')
+                ->references('id')->on('places')
+                ->onDelete('cascade');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->timestamps();

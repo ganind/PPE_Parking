@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('accueil');
 });
 
 Route::get('/bonjour/{name?}', function ($name = null) {
@@ -41,3 +41,7 @@ Route::group(['prefix’' => 'admin'], function() {
 }); */
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
