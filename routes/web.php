@@ -15,14 +15,9 @@ Route::get('/', function () {
     return view('accueil');
 });
 
-Route::get('/bonjour/{name?}', function ($name = null) {
-
-    if ($name === null) {
-        return 'Bonjour tout le monde';
-    } else {
-        return "Bonjour, $name !";
-    }
-});
+Route::get('protege', function () {
+    return 'affichage de la route protégé';
+})->middleware('verified');
 
 /*Les groupes de routes permettent de déclarer une liste de routes
 partageant un préfixe commun (en l’occurrence admin) à l’aide de
@@ -40,8 +35,7 @@ Route::group(['prefix’' => 'admin'], function() {
 
 }); */
 
-
-
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
