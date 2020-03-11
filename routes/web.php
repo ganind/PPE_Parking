@@ -11,27 +11,37 @@
 |
 */
 
+//route d'entrée du site
+
 Route::get('/', function () {
     return view('accueil');
 });
+
+//routes d'authentication
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::middleware('admin')->group(function (){
+    return view('admin.home');
+});
+
+//route pour accèder à la page contact
 
 Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('users', 'UsersController@create');
-Route::post('users', 'UsersController@store');
-
-Route::get('protege', function () {
-    return 'affichage de la route protégé';
-})->middleware('verified');
+//routes pour créer et envoyer une message de contact
 
 Route::get('contact', 'ContactController@create');
 Route::post('contact', 'ContactController@store');
 
-Auth::routes(['verify' => true]);
+//route pour les utilisateurs
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('users', 'UsersController@create');
+Route::post('users', 'UsersController@store');
 
 
 /*Les groupes de routes permettent de déclarer une liste de routes
