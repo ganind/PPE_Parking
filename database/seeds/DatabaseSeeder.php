@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        App\place::create(
+          [
+              'num_place'=>5,
+              'etat_place'=>1,
+          ]
+        );
     }
 }

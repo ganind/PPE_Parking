@@ -15,9 +15,24 @@ Route::get('/', function () {
     return view('accueil');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('users', 'UsersController@create');
+Route::post('users', 'UsersController@store');
+
 Route::get('protege', function () {
     return 'affichage de la route protégé';
 })->middleware('verified');
+
+Route::get('contact', 'ContactController@create');
+Route::post('contact', 'ContactController@store');
+
+Auth::routes(['verify' => true]);
+
+Route::get('/home', 'HomeController@index')->name('home');
+
 
 /*Les groupes de routes permettent de déclarer une liste de routes
 partageant un préfixe commun (en l’occurrence admin) à l’aide de
@@ -34,8 +49,4 @@ Route::group(['prefix’' => 'admin'], function() {
     Route::get('logs', function () { });
 
 }); */
-
-Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home');
 
