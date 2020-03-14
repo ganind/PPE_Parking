@@ -14,7 +14,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        //
+        //retourne la liste de toutes les réservations
+        $listeReservation=reservation::all();
+        return view('admin.reservation')->with('listeReservation',$listeReservation);
     }
 
     /**
@@ -24,7 +26,8 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //
+        //création d'une réservation
+        return view('create');
     }
 
     /**
@@ -35,7 +38,9 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //création d'une réservation
+        //reservation::create($request->all());
+        //return redirect()->route(admin.home)->with('info','La réservation a bien été créée');
     }
 
     /**
@@ -46,7 +51,8 @@ class ReservationController extends Controller
      */
     public function show(reservation $reservation)
     {
-        //
+        //retoune les détails d'une réservation
+        return view('admin.show', compact('reservation'));
     }
 
     /**
@@ -58,6 +64,7 @@ class ReservationController extends Controller
     public function edit(reservation $reservation)
     {
         //
+        return view('admin.edit',compact('reservation'));
     }
 
     /**
@@ -70,16 +77,23 @@ class ReservationController extends Controller
     public function update(Request $request, reservation $reservation)
     {
         //
+        $reservation->update($request->all());
+
+        return redirect()->route('reservations.index')->with('info','La réservation a bien été modifiée.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\reservation  $reservation
+     * @param \App\reservation $reservation
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(reservation $reservation)
     {
-        //
+        //supprime une réservation
+        $reservation->delete();
+
+        return back()->with('info', 'La réservation a bien été supprimée.');
     }
 }

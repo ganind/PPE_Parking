@@ -23,7 +23,10 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//route pour afficher la liste des inscrits
+//route pour afficher la liste des réservations
+
+Route::get('/reservation', 'ReservationController@index');
+Route::resource('reservations', 'ReservationController');
 
 
 //route pour accèder à la page contact

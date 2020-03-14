@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\reservation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
