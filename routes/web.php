@@ -23,9 +23,8 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::middleware('admin')->group(function (){
-    return view('admin.home');
-});
+//route pour afficher la liste des inscrits
+
 
 //route pour accèder à la page contact
 

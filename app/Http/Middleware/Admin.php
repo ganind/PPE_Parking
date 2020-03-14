@@ -15,9 +15,10 @@ class Admin
      */
     public function handle($request, Closure $next)
     {
+        Log::error('passage dans le middleware admin');
         $user = $request->user();
         //verification si l'utilisateur porte le droit d'admin
-        if ($user && $user->role === 'admin') {
+        if ($user && $user->admin === 1) {
             return $next($request);
         }
         return redirect()->route('home');
