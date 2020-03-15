@@ -15,6 +15,6 @@ class reservation extends Model
      * @var array
      */
     protected $fillable = [
-        'date_debut', 'date_fin',
+        'users_id','place_id','rang_attente','date_debut', 'date_fin',
     ];
 }
