@@ -11,31 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        App\place::create(
-          [
-              'num_place'=>5,
-              'disponible'=>1,
-          ],
-          [
-              'num_place'=>10,
-              'disponible'=>1,
-          ],
-          [
-              'num_place'=>15,
-              'disponible'=>1,
-          ],
-          [
-              'num_place'=>20,
-              'disponible'=>1,
-          ],
-          [
-              'num_place'=>25,
-              'disponible'=>1,
-          ],
-          [
-              'num_place'=>30,
-              'disponible'=>1,
-          ]
-        );
+        //les seeds à faire et dans quel ordre les faire
+        $this->call(UserSeeder::class);
+        $this->call(PlaceSeeder::class);
+        $this->call(ReservationSeeder::class);
     }
 }

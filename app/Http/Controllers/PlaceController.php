@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\place;
-use App\reservation;
+use App\Place;
+use App\Reservation;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -16,73 +16,7 @@ class PlaceController extends Controller
     public function index()
     {
         //retourne la liste de toutes les places
-        $listePlaces=place::all();
-        return view('user.reservation')->with('listePlace',$listePlaces);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function show(place $place)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(place $place)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, place $place)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\place  $place
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(place $place)
-    {
-        //
+        $listePlaces = Place::all();
+        return view('places')->with('listePlace', $listePlaces);
     }
 }

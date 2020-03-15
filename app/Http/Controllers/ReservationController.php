@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\place;
-use App\reservation;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Place;
+use App\Reservation;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -19,8 +20,17 @@ class ReservationController extends Controller
     public function index()
     {
         //retourne la liste de toutes les réservations
-        $listeReservation=reservation::all();
-        return view('admin.reservation')->with('listeReservation',$listeReservation);
+        $listeReservation=reservation::all()
+            ->where('users_id', Auth::user()->getUserInfo()['id'])
+            ->orderBy('date_debut', 'asc')
+            ->get();
+
+        /*$user = Auth::user();
+        if ($user && $user->admin === 1) {
+            return view('admin.reservation')->with('listeReservation',$listeReservation);
+        }
+        //si utilisateur n'est pas admin la view home d'user est affichée
+        return view('user.home'); */
     }
 
     /**
@@ -28,10 +38,11 @@ class ReservationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($place_id)
     {
         //création d'une réservation
-        return view('user.create');
+        $listePlaces = Place::with('disponibles')->get()->find($place_id);
+        return view('dashboard.reservationCreate', compact('listePlaces'));
     }
 
     /**
@@ -42,7 +53,13 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //création d'une réservation
+        $user_id = Auth::user()->getUserInfo()['id'];
+        $request->request->add(['user_id'=>$user_id]);
+        Reservation::create($request->all());
+
+        return redirect('dashboard/reservations')->with('success', 'Réservation créée !');
+
+        /*création d'une réservation
         //$user = Auth::user()->id;
         //$place = place::where('num_place',30)->get('id');
         //Log::error('lidentifiant de luser est '.$user);
@@ -56,10 +73,8 @@ class ReservationController extends Controller
             'date_debut'=>request('date_debut'),
             'date_fin'=>request('date_fin')
             ]);
-
         //Log::error('passage dans le middleware admin'.$request->all()['num_place']);
-
-        return redirect()->route('user.index')->with('info','La réservation a bien été créée');
+        return redirect()->route('user.index')->with('info','La réservation a bien été créée'); */
     }
 
     /**
@@ -68,10 +83,20 @@ class ReservationController extends Controller
      * @param  \App\reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(reservation $reservation)
+    public function show(Reservation $reservation)
     {
-        //retoune les détails d'une réservation
-        return view('admin.show', compact('reservation'));
+        //retourne les détails d'une réservation
+        $reservation= Reservation::with('place_id', 'place.place')
+            ->get()
+            ->find($reservation->id);
+
+        if ($reservation->user_id === Auth::user()->getUserInfo()['id]']) {
+        $place_id= $reservation->place->place_id;
+        $listePlaces= Place::with('places')->get()->find($place_id);
+
+        return view('dashboard.reservationsSingles', compact('reservation', 'listePlaces'));
+        } else
+        return redirect('dashboard/reservations')->with('error', 'Vous ne pouvez pas être ici.');
     }
 
     /**
@@ -80,39 +105,59 @@ class ReservationController extends Controller
      * @param  \App\reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(reservation $reservation)
+    public function edit(Reservation $reservation)
     {
-        //
-        return view('admin.edit',compact('reservation'));
+        $reservation= Reservation::with('place_id', 'place.place')
+            ->get()
+            ->find($reservation->id);
+        if ($reservation->user_id === Auth::user()->getUserInfo()['id]']) {
+            $place_id = $reservation->place->place_id;
+            $listePlaces = Place::with('places')->get()->find($place_id);
+            return view('dasboard.reservationEdit', compact('reservation', 'listePlaces'));
+        } else
+            return redirect('dashboard/reservations')->with('error', 'Vous ne pouvez pas être ici.');
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\reservation  $reservation
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, reservation $reservation)
-    {
-        //
-        $reservation->update($request->all());
 
-        return redirect()->route('reservations.index')->with('info','La réservation a bien été modifiée.');
+    public function update(Request $request, Reservation $reservation)
+    {
+        if ($reservation->user_id != Auth::user()->getUserInfo(['id']))
+            return redirect('dashboard/reservations')->with('error', 'Vous ne pouvez pas être ici.');
+
+        $user_id = Auth::user()->getUserInfo()['id'];
+        $reservation->users_id= $user_id;
+        $reservation->date_debut = $request->date_debut;
+        $reservation->date_fin = $reservation->date_fin;
+
+        $reservation->save();
+
+        return redirect('dashboard/reservations')->with('success','La réservation a bien été modifiée !');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\reservation $reservation
+     * @param int $id
      * @return \Illuminate\Http\Response
-     * @throws \Exception
      */
-    public function destroy(reservation $reservation)
+
+    public function destroy(Reservation $reservation)
     {
         //supprime une réservation
+        $reservation = Reservation::find($reservation->id);
+
+        if ($reservation->user_id === Auth::user()->getUserInfo()['id']) {
         $reservation->delete();
 
-        return back()->with('info', 'La réservation a bien été supprimée.');
+        return redirect('dashboard/reservations')->with('success', 'La réservation a bien été supprimée !');
+        } else
+            return redirect('dashboard/reservations')->with('success','La réservation a bien été modifiée !');
     }
 }

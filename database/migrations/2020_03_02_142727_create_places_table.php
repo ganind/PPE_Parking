@@ -17,6 +17,7 @@ class CreatePlacesTable extends Migration
             $table->increments('id');
             $table->integer('num_place');
             $table->boolean('disponible');
+            $table->timestamps();
         });
     }
 

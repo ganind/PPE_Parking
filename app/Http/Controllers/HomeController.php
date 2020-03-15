@@ -33,6 +33,6 @@ class HomeController extends Controller
             return view('admin.home');
         }
         //si utilisateur n'est pas admin la view home d'user est affichée
-        return view('user.home');
+        return view('home');
     }
 }

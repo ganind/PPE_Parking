@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class attente extends Model
+class Attente extends Model
 {
     //
 }

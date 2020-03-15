@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
 
-class reservation extends Model
+class Place extends Model
 {
     use Notifiable;
 
@@ -15,6 +15,12 @@ class reservation extends Model
      * @var array
      */
     protected $fillable = [
-        'users_id','place_id','rang_attente','date_debut', 'date_fin',
+        'num_place',
+        'disponible'
     ];
+
+    //définir relation entre le modèle Reservation
+    public function reservation() {
+        return $this->belongsTo("'App\Reservation");
+    }
 }

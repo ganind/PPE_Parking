@@ -13,21 +13,30 @@
 
 //route d'entrée du site
 
-Route::get('/', function () {
-    return view('accueil');
-});
+Route::view('/', 'home');
 
 //routes d'authentication
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+//route pour l'affichage de l'accueil utilisateur
+Route::get('/', 'HomeController@index')->name('home');
 
-//route pour afficher la liste des réservations
+//route pour l'affichage et sélection des places
+Route::get('/places', 'PlaceController@index')->name('places');
 
-Route::get('/reservation', 'ReservationController@index');
-Route::resource('reservations', 'ReservationController');
+//routes pour faire,créer et aficher les réservations
 
+Route::view('/dashboard', 'dashboard/dashboard')->name('dashboard');
+    //{id} oblige l'utilisateur de choisir une place pour pouvoir effectuer une réservation
+Route::get('/dashboard/reservation/create/{id}', 'ReservationController@create');
+Route::resource('dashboard/reservations', 'ReservationController')->except('create');
+
+
+//route pour les utilisateurs
+
+Route::get('users', 'UsersController@create');
+Route::post('users', 'UsersController@store');
 
 //route pour accèder à la page contact
 
@@ -40,25 +49,4 @@ Route::get('/contact', function () {
 Route::get('contact', 'ContactController@create');
 Route::post('contact', 'ContactController@store');
 
-//route pour les utilisateurs
-
-Route::get('users', 'UsersController@create');
-Route::post('users', 'UsersController@store');
-
-
-/*Les groupes de routes permettent de déclarer une liste de routes
-partageant un préfixe commun (en l’occurrence admin) à l’aide de
-la méthode Route::group et de la propriété prefix.
-Pour éviter de répéter admin pour chacune des routes d’administration,
-il est possible de les organiser de la manière suivante :
-
-Route::group(['prefix’' => 'admin'], function() {
-
-    Route::get('stats', function () {  });
-    Route::get('users', function () {  });
-    Route::get('users/{id}', function ($id) { });
-    Route::get('users/create', function () { });
-    Route::get('logs', function () { });
-
-}); */
 
