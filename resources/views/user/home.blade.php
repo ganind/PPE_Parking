@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('css')
+    <style>
+        .card-footer {
+            justify-content: center;
+            align-items: center;
+            padding: 0.4em;
+        }
+        .is-info {
+            margin: 0.3em;
+        }
+    </style>
+@endsection
 @section('content')
     @if(session()->has('info'))
         <div class="notification is-success">
@@ -11,7 +23,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Tableau de Bord</div>
-
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -20,9 +31,10 @@
                         @endif
 
                         Bienvenue, <p> {{$user ?? ''}} </p>
-                        <br>
-                        <a href="{{ url('/reservation') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Réserver une Place</a>
-                        <a href="{{ url('/historique') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Mon Historique</a>
+
+                            <a class="button is-info" href="{{ route('reservations.create') }}">Réserver une Place</a>
+                            <br>
+                            <a class="button is-info" href="{{ route('reservations.create') }}">Mon Historique</a>
                     </div>
                 </div>
             </div>

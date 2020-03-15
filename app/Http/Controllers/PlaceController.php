@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\place;
+use App\reservation;
 use Illuminate\Http\Request;
 
 class PlaceController extends Controller
@@ -14,7 +15,9 @@ class PlaceController extends Controller
      */
     public function index()
     {
-        //
+        //retourne la liste de toutes les places
+        $listePlaces=place::all();
+        return view('user.reservation')->with('listePlace',$listePlaces);
     }
 
     /**

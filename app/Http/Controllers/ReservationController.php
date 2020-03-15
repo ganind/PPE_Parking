@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\reservation;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class ReservationController extends Controller
 {
@@ -28,7 +30,7 @@ class ReservationController extends Controller
     public function create()
     {
         //création d'une réservation
-        return view('create');
+        return view('user.create');
     }
 
     /**
@@ -40,8 +42,11 @@ class ReservationController extends Controller
     public function store(Request $request)
     {
         //création d'une réservation
+        $user = Auth::user();
+        Log::error('passage dans le middleware admin'.$request->all()['num_place']);
         //reservation::create($request->all());
-        //return redirect()->route(admin.home)->with('info','La réservation a bien été créée');
+
+        return redirect()->route('user.index')->with('info','La réservation a bien été créée');
     }
 
     /**

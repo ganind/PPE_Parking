@@ -32,6 +32,7 @@ class HomeController extends Controller
         if ($user && $user->admin === 1) {
             return view('admin.home');
         }
-        return view('home');
+        //si utilisateur n'est pas admin la view home d'user est affichée
+        return view('user.home');
     }
 }
