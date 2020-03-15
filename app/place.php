@@ -15,6 +15,11 @@ class place extends Model
      * @var array
      */
     protected $fillable = [
-        'num_place', 'disponible',
+        'num_place',
+        'disponible',
     ];
+    //définir relation entre le modèle Reservation
+    public function reservation() {
+        return $this->belongsTo('App\reservation');
+    }
 }
