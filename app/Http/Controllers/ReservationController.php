@@ -44,22 +44,21 @@ class ReservationController extends Controller
     {
         //création d'une réservation
         //$user = Auth::user()->id;
-        //$place = place::where('num_place',30)->get('id');
+        $place = place::where('num_place',30)->get('id');
         //Log::error('lidentifiant de luser est '.$user);
         //Log::error('passage dans le middleware admin '.$place);
         //$newArray = array('users_id' =>$user, 'place_id'=>$place,'rang_attente'=>0,'date_debut'=>$request->all()['date_debut'], 'date_fin'=>$request->all()['date_fin']);
         //Log::error("la variable tableau est ".var_dump($newArray));
         reservation::create([
             'users_id'=>Auth::user()->id,
-            'place_id'=>request('num_place'),
-            'rang_attente'=>0,
+            'place_id'=>$place[0]->id,
             'date_debut'=>request('date_debut'),
             'date_fin'=>request('date_fin')
             ]);
 
         //Log::error('passage dans le middleware admin'.$request->all()['num_place']);
 
-        return redirect()->route('user.index')->with('info','La réservation a bien été créée');
+        return redirect()->route('home')->with('info','La réservation a bien été créée');
     }
 
     /**
