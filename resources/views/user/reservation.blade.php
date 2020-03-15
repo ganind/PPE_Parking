@@ -1,17 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(session()->has('info'))
-        <div class="notification is-success">
-            {{ session('info') }}
-        </div>
-    @endif
-    <div class="card">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Réservations</div>
+                    <div class="card-header">Votre Tableau de Bord</div>
+
                     <div class="card-content">
                         <div class="content">
                             <table class="table is-hoverable">
@@ -49,4 +44,6 @@
                 </div>
             </div>
         </div>
+    </div>
 @endsection
+

@@ -14,12 +14,7 @@ class CreateAttentesTable extends Migration
     public function up()
     {
         Schema::create('attentes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('users_id')->unsigned();
-            $table->foreign('users_id')
-                ->references('id')->on('users')
-                ->onDelete('cascade');
-            $table->boolean('priorite_attente');
+            $table->increments('rang');
             $table->timestamps();
         });
     }

@@ -14,7 +14,27 @@ class DatabaseSeeder extends Seeder
         App\place::create(
           [
               'num_place'=>5,
-              'etat_place'=>1,
+              'disponible'=>1,
+          ],
+          [
+              'num_place'=>10,
+              'disponible'=>1,
+          ],
+          [
+              'num_place'=>15,
+              'disponible'=>1,
+          ],
+          [
+              'num_place'=>20,
+              'disponible'=>1,
+          ],
+          [
+              'num_place'=>25,
+              'disponible'=>1,
+          ],
+          [
+              'num_place'=>30,
+              'disponible'=>1,
           ]
         );
     }
