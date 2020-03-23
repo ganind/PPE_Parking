@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Réservations</div>
+                    <div class="card-header">Réservations - ADMIN</div>
                     <div class="card-content">
                         <div class="content">
                             <table class="table is-hoverable">

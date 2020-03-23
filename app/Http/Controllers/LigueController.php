@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\ligue;
+use App\Ligue;
 use Illuminate\Http\Request;
 
 class LigueController extends Controller
@@ -41,10 +41,10 @@ class LigueController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ligue  $ligue
+     * @param  \App\Ligue  $ligue
      * @return \Illuminate\Http\Response
      */
-    public function show(ligue $ligue)
+    public function show(Ligue $ligue)
     {
         //
     }
@@ -52,10 +52,10 @@ class LigueController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\ligue  $ligue
+     * @param  \App\Ligue  $ligue
      * @return \Illuminate\Http\Response
      */
-    public function edit(ligue $ligue)
+    public function edit(Ligue $ligue)
     {
         //
     }
@@ -64,10 +64,10 @@ class LigueController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ligue  $ligue
+     * @param  \App\Ligue  $ligue
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ligue $ligue)
+    public function update(Request $request, Ligue $ligue)
     {
         //
     }
@@ -75,10 +75,10 @@ class LigueController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ligue  $ligue
+     * @param  \App\Ligue  $ligue
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ligue $ligue)
+    public function destroy(Ligue $ligue)
     {
         //
     }

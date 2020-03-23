@@ -10,7 +10,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Tableau de Bord</div>
+                    <div class="card-header">Tableau de Bord - ADMIN</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -21,7 +21,7 @@
 
                         Bienvenue, <p> {{$user ?? ''}} </p>
                             <br>
-                            <a href="{{ url('/reservation') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Réservations</a>
+                            <a href="{{ route('reservations.index') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Réservations</a>
                             <a href="{{ url('/contact') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Liste d'Attente</a>
                             <a href="{{ url('/contact') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Inscriptions</a>
                     </div>

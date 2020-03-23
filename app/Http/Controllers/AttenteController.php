@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\attente;
+use App\Attente;
 use Illuminate\Http\Request;
 
 class AttenteController extends Controller
@@ -41,10 +41,10 @@ class AttenteController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\attente  $attente
+     * @param  \App\Attente  $attente
      * @return \Illuminate\Http\Response
      */
-    public function show(attente $attente)
+    public function show(Attente $attente)
     {
         //
     }
@@ -52,10 +52,10 @@ class AttenteController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\attente  $attente
+     * @param  \App\Attente  $attente
      * @return \Illuminate\Http\Response
      */
-    public function edit(attente $attente)
+    public function edit(Attente $attente)
     {
         //
     }
@@ -64,10 +64,10 @@ class AttenteController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\attente  $attente
+     * @param  \App\Attente  $attente
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, attente $attente)
+    public function update(Request $request, Attente $attente)
     {
         //
     }
@@ -75,10 +75,10 @@ class AttenteController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\attente  $attente
+     * @param  \App\Attente  $attente
      * @return \Illuminate\Http\Response
      */
-    public function destroy(attente $attente)
+    public function destroy(Attente $attente)
     {
         //
     }

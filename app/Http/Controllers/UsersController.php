@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\place;
-use App\reservation;
+use App\Place;
+use App\Reservation;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller

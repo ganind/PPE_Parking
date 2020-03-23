@@ -16,12 +16,14 @@ class reservation extends Model
      */
     protected $fillable = [
         'users_id',
-        'place_id',
         'date_debut',
         'date_fin',
     ];
+
     //définir relation entre le modèle Place
     //une réservation peut avoir une seule place de parking
+    private $id;
+
     public function place() {
         return $this->belongsTo('App\place');
     }

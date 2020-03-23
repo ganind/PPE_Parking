@@ -73,6 +73,10 @@
         <div class="title m-b-md">
             Parking
         </div>
+        <?php
+        $mytime = Carbon\Carbon::now();
+        echo $mytime->toDateTimeString();
+        ?>
         <!-- LIENS
         <div class="links">
             <a href="https://laravel.com/docs">Documentation</a>
