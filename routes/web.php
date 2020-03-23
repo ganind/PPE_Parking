@@ -57,7 +57,7 @@ Route::post('users', 'UsersController@store');
 
 //routes pour les pages admin
 
-Route::group(['prefix’' => 'admin'], function() {
+Route::group(['prefix' => 'admin'], function() {
 
     Route::get('users', function () {  });
     Route::get('users/{id}', function ($id) { });
