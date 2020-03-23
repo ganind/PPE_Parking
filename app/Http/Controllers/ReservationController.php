@@ -34,19 +34,22 @@ class ReservationController extends Controller
     {
         //création d'une réservation
 
-        //Log::error('place id dispo : '.$place[0]->id);
         if ($place = place::where('disponible',1)->get('id')){
         reservation::create([
             'users_id'=>Auth::user()->id,
+           //'place_id'=>$place->length(),
             'place_id'=>$place[0]->id,
             'date_debut'=>now(),
             'date_fin'=> now()->modify('+1 month')
         ]);
+
+        // update de la disponibilité sur la table Place
+
         place::where('id',$place[0]->id)->update(['disponible'=>0]);
 
-        return view('user.create');
+            return redirect()->route('home')->with('info','La réservation a bien été créée');
         } else {
-            return view('users.home');
+            return redirect()->route('home')->with('info','Vous êtes en Liste d Attente');
         }
     }
 
