@@ -22,12 +22,4 @@ class PlaceController extends Controller
 
         return view('places')->with('listePlaces',$listePlaces);
     }
-
-    /*public function update(){
-        //création d'une réservation
-
-        $place->update($place->('disponible',0));
-
-        return redirect()->route('reservations.index')->with('info','La réservation a bien été modifiée.');
-    }*/
 }

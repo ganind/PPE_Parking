@@ -19,7 +19,9 @@ class ReservationController extends Controller
     public function index()
     {
         //retourne la liste de toutes les réservations
+
         $listeReservation=reservation::all();
+
         return view('admin.reservation')->with('listeReservation',$listeReservation);
     }
 
@@ -40,6 +42,8 @@ class ReservationController extends Controller
             'date_debut'=>now(),
             'date_fin'=> now()->modify('+1 month')
         ]);
+        place::where('id',$place[0]->id)->update(['disponible'=>0]);
+
         return view('user.create');
         } else {
             return view('users.home');
