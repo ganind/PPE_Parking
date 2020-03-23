@@ -36,7 +36,6 @@
                             <br>
                             <a class="button is-info" href="{{ route('places.index') }}">Places</a>
                         <br>
-                           <!-- <a class="button is-info" href="">Places</a> -->
                     </div>
                 </div>
             </div>

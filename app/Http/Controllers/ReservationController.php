@@ -31,16 +31,19 @@ class ReservationController extends Controller
     public function create()
     {
         //création d'une réservation
-        $place = place::where('disponible',1)->get('id');
-        Log::error('place id dispo : '.$place[0]->id);
+
+        //Log::error('place id dispo : '.$place[0]->id);
+        if ($place = place::where('disponible',1)->get('id')){
         reservation::create([
             'users_id'=>Auth::user()->id,
             'place_id'=>$place[0]->id,
             'date_debut'=>now(),
             'date_fin'=> now()->modify('+1 month')
         ]);
-
         return view('user.create');
+        } else {
+            return view('users.home');
+        }
     }
 
     /**
@@ -51,7 +54,7 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        //création d'une réservation
+        /*création d'une réservation
         $place = place::where('num_place',30)->get('id');
         reservation::create([
             'users_id'=>Auth::user()->id,
@@ -60,7 +63,7 @@ class ReservationController extends Controller
             'date_fin'=>request('date_fin')
             ]);
 
-        return redirect()->route('home')->with('info','La réservation a bien été créée');
+        return redirect()->route('home')->with('info','La réservation a bien été créée'); */
     }
 
     /**
