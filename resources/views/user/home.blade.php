@@ -29,6 +29,7 @@
                                 {{ session('status') }}
                             </div>
                         @endif
+                            Bienvenue  {{ Auth::user()->name }}, <p> que souhaitez-vous faire ? </p>
                             <a class="button is-info" href="{{ route('reservations.create') }}">Réserver une Place</a>
                             <br>
                             <a class="button is-info" href="{{ route('reservations.index') }}">Historique</a>

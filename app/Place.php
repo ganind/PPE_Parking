@@ -17,7 +17,6 @@ class Place extends Model
     protected $fillable = [
         'num_place',
         'disponible',
-        'place_id',
     ];
 
     //définir relation entre le modèle Reservation

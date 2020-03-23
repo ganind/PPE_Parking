@@ -16,6 +16,7 @@ class reservation extends Model
      */
     protected $fillable = [
         'users_id',
+        'place_id',
         'date_debut',
         'date_fin',
     ];
@@ -25,6 +26,6 @@ class reservation extends Model
     private $id;
 
     public function place() {
-        return $this->belongsTo('App\place');
+        return $this->belongsTo('App\Place');
     }
 }
