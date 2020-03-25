@@ -21,7 +21,7 @@ class reservation extends Model
         'date_fin',
     ];
 
-    //définir relation entre le modèle Place
+    //définit relation avec le modèle Place
     //une réservation peut avoir une seule place de parking
     private $id;
 

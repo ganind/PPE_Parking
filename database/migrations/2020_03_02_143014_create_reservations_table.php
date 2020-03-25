@@ -25,11 +25,6 @@ class CreateReservationsTable extends Migration
                 ->references('id')->on('places')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
-            $table->integer('rang_attente')->unsigned();
-            $table->foreign('rang_attente')
-                ->references('rang')->on('attentes')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->date('date_debut');
             $table->date('date_fin');
             $table->timestamps();

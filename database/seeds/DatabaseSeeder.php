@@ -12,8 +12,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //les seeds à faire et dans quel ordre les faire
-        $this->call(UserSeeder::class);
         $this->call(PlaceSeeder::class);
+        $this->call(UserSeeder::class);
         $this->call(ReservationSeeder::class);
     }
 }
