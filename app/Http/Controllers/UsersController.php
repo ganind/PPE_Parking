@@ -29,7 +29,7 @@ class UsersController extends Controller
     */
     public function create()
     {
-        return view('user.create');
+        //
     }
 
     /**
@@ -40,57 +40,66 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //Log::error("n'importe quoi");
+
         User::create($request->all());
-        //Log::error("bah voilà");
-        return view('home');
+
+        return view('accueil');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function show(User $user)
     {
-        echo 'Nom : ' . $user->name . '<br>';
-        echo 'Email : ' . $user->email . '<br>';
+        //retoune les détails d'un utilisateur
+
+        return view('admin.showUsers', compact('user'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        return view('user.edit');
+        //retourne lq view de modification d'un utilisateur
+
+        return view('admin.editUsers', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\User $user
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, User $user)
     {
+        //execute la rêquete de modification d'un utilisateur
+
         $user->update($request->all());
 
-        return "Utilisateur modifié !";
+        return redirect()->route('users.index')->with('info','L utilisateur a bien été modifiée.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param \App\User $user
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        //supprime un utilisateur
+        $user->delete();
+
+        return back()->with('info', 'L utilisateur a bien été supprimée.');
     }
 }

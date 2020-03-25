@@ -12,7 +12,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Tableau de Bord Admin - Liste d'Utilisateurs</div>
-                    <p class="card-header-title">Utilisateurs</p>
                     <div class="card-content">
                         <div class="content">
                             <table class="table is-hoverable">
@@ -20,20 +19,30 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nom</th>
-                                    <th>Email</th>
-                                    <th>Email Verifié</th>
-                                    <th>Enregistré</th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <!--boucle foreach pour afficher tous les utilisateurs inscrits-->
+
                                 @foreach($listeUsers as $user)
                                     <tr>
                                         <td>{{ $user->id }}</td>
-                                        <td>{{ $user->name }}</td>
-                                        <td><strong>{{ $user->email }}</strong></td>
-                                        <td>{{ $user->email_verified_at }}</td>
-                                        <td>{{ $user->created_at }}</td>
+                                        <td><strong>{{ $user->name }}</strong></td>
+
+                                        <!-- méthode route génère une url et est accompagnée d'un paramètre -->
+
+                                        <td><a class="button is-primary" href="{{ route('users.show', $user->id) }}">Voir</a></td>
+                                        <td><a class="button is-warning" href="{{ route('users.edit', $user->id) }}">Modifier</a></td>
+                                        <td>
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="button is-danger" type="submit">Supprimer</button>
+                                            </form>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>

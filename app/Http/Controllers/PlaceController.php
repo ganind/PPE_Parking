@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Place;
-use App\Reservation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 class PlaceController extends Controller
 {
@@ -20,6 +18,6 @@ class PlaceController extends Controller
 
         $listePlaces=Place::all();
 
-        return view('places')->with('listePlaces',$listePlaces);
+        return view('admin.places')->with('listePlaces',$listePlaces);
     }
 }

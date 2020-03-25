@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\place;
-use App\reservation;
+use App\Place;
+use App\Reservation;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +49,7 @@ class ReservationController extends Controller
 
             return redirect()->route('home')->with('info','La réservation a bien été créée');
         } else {
+
             return redirect()->route('home')->with('info','Vous êtes en Liste d Attente');
         }
     }
@@ -61,39 +62,30 @@ class ReservationController extends Controller
      */
     public function store(Request $request)
     {
-        /*création d'une réservation
-        $place = place::where('num_place',30)->get('id');
-        reservation::create([
-            'users_id'=>Auth::user()->id,
-            'place_id'=>$place[0]->id,
-            'date_debut'=>request('date_debut'),
-            'date_fin'=>request('date_fin')
-            ]);
-
-        return redirect()->route('home')->with('info','La réservation a bien été créée'); */
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\reservation  $reservation
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show(reservation $reservation)
+    public function show(Reservation $reservation)
     {
         //retoune les détails d'une réservation
+
         return view('admin.show', compact('reservation'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\reservation  $reservation
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(reservation $reservation)
+    public function edit(Reservation $reservation)
     {
-        //
         return view('admin.edit',compact('reservation'));
     }
 
@@ -101,10 +93,10 @@ class ReservationController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\reservation  $reservation
+     * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, reservation $reservation)
+    public function update(Request $request, Reservation $reservation)
     {
         //
         $reservation->update($request->all());
@@ -115,11 +107,11 @@ class ReservationController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\reservation $reservation
+     * @param \App\Reservation $reservation
      * @return \Illuminate\Http\Response
      * @throws \Exception
      */
-    public function destroy(reservation $reservation)
+    public function destroy(Reservation $reservation)
     {
         //supprime une réservation
         $reservation->delete();
