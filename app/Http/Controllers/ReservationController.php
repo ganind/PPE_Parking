@@ -30,7 +30,7 @@ class ReservationController extends Controller
     {
         //retourne la liste de toutes les réservations
 
-        $listeReservation=reservation::all();
+        $listeReservation=Reservation::all();
 
         return view('admin.reservation')->with('listeReservation',$listeReservation);
     }
@@ -44,8 +44,8 @@ class ReservationController extends Controller
     {
         //création d'une réservation
 
-        if ($place = place::where('disponible',1)->get('id')){
-        reservation::create([
+        if ($place = Place::where('disponible',1)->get('id')){
+        Reservation::create([
             'users_id'=>Auth::user()->id,
            //'place_id'=>$place->length(),
             'place_id'=>$place[0]->id,
@@ -55,9 +55,10 @@ class ReservationController extends Controller
 
         // update de la disponibilité sur la table Place
 
-        place::where('id',$place[0]->id)->update(['disponible'=>0]);
+        Place::where('id',$place[0]->id)->update(['disponible'=>0]);
 
             return redirect()->route('home')->with('info','La réservation a bien été créée');
+
         } else {
 
             return redirect()->route('home')->with('info','Vous êtes en Liste d Attente');
@@ -123,8 +124,11 @@ class ReservationController extends Controller
      */
     public function destroy(Reservation $reservation)
     {
-        //supprime une réservation
-        $reservation->delete();
+        //finit une réservation en changeant la date de fin
+        $reservation->update(['date_fin'=>now()]);
+
+        //rendre la place dispo après suppression de la réserv
+        $reservation->place()->update(['disponible'=>1]);
 
         return back()->with('info', 'La réservation a bien été supprimée.');
     }
