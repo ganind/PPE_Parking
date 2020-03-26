@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+@section('css')
+    <style>
+        .card-footer {
+            justify-content: center;
+            align-items: center;
+            padding: 0.4em;
+        }
+    </style>
+@endsection
+
 @section('content')
     @if(session()->has('info'))
         <div class="notification is-success">
@@ -51,4 +61,9 @@
                 </div>
             </div>
         </div>
+    </div>
+        <footer class="card-footer">
+            {{ $listeReservation->links() }}
+        </footer>
+    </div>
 @endsection

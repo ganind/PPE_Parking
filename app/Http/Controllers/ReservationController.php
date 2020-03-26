@@ -18,7 +18,7 @@ class ReservationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin');
+        //$this->middleware('admin');
     }
 
     /**
@@ -30,7 +30,7 @@ class ReservationController extends Controller
     {
         //retourne la liste de toutes les réservations
 
-        $listeReservation=Reservation::all();
+        $listeReservation=Reservation::where('date_fin','<',now())->paginate(5);
 
         return view('admin.reservation')->with('listeReservation',$listeReservation);
     }
