@@ -1,24 +1,40 @@
 @extends('layouts.app')
-@section('title', 'UTilisateurs')
+@section('title', 'Utilisateurs')
+
+@section('css')
+    <style>
+        .card-footer {
+            justify-content: center;
+            align-items: center;
+            padding: 0.4em;
+        }
+    </style>
+@endsection
+
 @section('content')
+
     <!-- Notification de modification -->
     @if(session()->has('info'))
         <div class="notification is-success">
             {{ session('info') }}
         </div>
     @endif
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Tableau de Bord Admin - Liste d'Utilisateurs</div>
+                    <div class="card-header justify-content-center"><h3>Liste d'Utilisateurs</h3></div>
                     <div class="card-content">
                         <div class="content">
+                            <a href="{{ route('users.create') }}" class="btn btn-secondary btn-lg"role="button" aria-pressed="true">Créer</a>
+                            <br>
                             <table class="table is-hoverable">
+                                <br>
                                 <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>Nom</th>
+                                    <th><h5>Id</h5></th>
+                                    <th><h5>Nom</h5></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>
@@ -52,5 +68,8 @@
                 </div>
             </div>
         </div>
+        <footer class="card-footer">
+            {{ $listeUsers->links() }}
+        </footer>
     </div>
 @endsection

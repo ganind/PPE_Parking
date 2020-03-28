@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Créer un utilisateur</div>
-                    <div class="panel-body">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header justify-content-center"><h4>Créer un Utilisateur</h4></div>
+                    <div class="card-body">
                         <form class="form-horizontal" method="POST" action="{{ route('users.store') }}">
-                            {{ csrf_field() }}
+                            @csrf
                             <div class="form-group">
                                 <label for="name" class="col-md-4 control-label">Nom</label>
                                 <div class="col-md-6">
@@ -28,9 +28,8 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-md-8 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Enregistrer
-                                    </button>
+                                    <button type="submit" class="btn btn-primary">Enregistrer</button>
+                                    <a class="btn btn-primary" href="{{ url('/users') }}">Retour</a>
                                 </div>
                             </div>
                         </form>

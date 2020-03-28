@@ -1,12 +1,16 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">Modification d'une réservation - ADMIN</p>
-        </header>
-        <div class="card-content">
-            <div class="content">
-                <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Modification d'une Réservation - ADMIN</p>
+                    </header>
+
+            <div class="card-content">
+                <div class="content">
+                    <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="field">
@@ -27,16 +31,17 @@
                             <input type="date" name="date_fin" value="{{ old('date_fin', $reservation->date_fin) }}" min="2000" max="{{ date('timestamp:int') }}">
                         </div>
                     </div>
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-link">Envoyer</button>
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            <a class="btn btn-primary" href="{{ url('/reservations') }}">Retour</a>
                         </div>
-                        <p class="control">
-                            <a class="button is-link">Cancel</a>
-                        </p>
                     </div>
                 </form>
             </div>
         </div>
+    </div>
+    </div>
+    </div>
     </div>
 @endsection

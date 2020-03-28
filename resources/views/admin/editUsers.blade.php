@@ -1,12 +1,17 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">Modification d'un Utilisateur - ADMIN</p>
-        </header>
-        <div class="card-content">
-            <div class="content">
-                <form action="{{ route('users.update', $user->id) }}" method="POST">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">Modification d'un Utilisateur - ADMIN</p>
+                    </header>
+
+                     <div class="card-content">
+                        <div class="content">
+                         <form method="POST" action="{{ route('users.update', $user->id) }}">
                     @csrf
                     @method('put')
                     <div class="field">
@@ -21,16 +26,17 @@
                             <input class="input" type="email" name="email" value="{{ old('email', $user->email) }}">
                         </div>
                     </div>
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-link">Envoyer</button>
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                             <a class="btn btn-primary" href="{{ url('/users') }}">Retour</a>
                         </div>
-                        <p class="control">
-                            <a class="button is-link">Cancel</a>
-                        </p>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
 @endsection

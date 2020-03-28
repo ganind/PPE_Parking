@@ -22,7 +22,7 @@
                         Bienvenue, {{ Auth::user()->name }} !
                             <br>
                             <br>
-                            <a href="{{ route('reservations.index') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Réservations</a>
+                            <a href="{{ route('reservations.index') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Réservations </a>
                             <a href="{{ url('/contact') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Liste d'Attente</a>
                             <a href="{{ url('/contact') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Inscriptions</a>
                             <a href="{{ route('places.index') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Places</a>

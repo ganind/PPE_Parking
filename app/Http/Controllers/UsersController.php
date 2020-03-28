@@ -27,7 +27,7 @@ class UsersController extends Controller
     {
         //affiche la liste de tous les utilisateurs
 
-        $listeUsers=User::all();
+        $listeUsers=User::paginate(5);
 
         return view('admin.users')->with('listeUsers',$listeUsers);
     }
@@ -39,7 +39,7 @@ class UsersController extends Controller
     */
     public function create()
     {
-        //
+        return view('admin.createUser');
     }
 
     /**
@@ -50,10 +50,9 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-
         User::create($request->all());
 
-        return view('accueil');
+        Return redirect()->route('home')->with('info', 'Utilisateur a bien été creéé');
     }
 
     /**
@@ -64,7 +63,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        //retoune les détails d'un utilisateur
+        //retoune les détails d'UN utilisateur
 
         return view('admin.showUsers', compact('user'));
     }
@@ -77,7 +76,7 @@ class UsersController extends Controller
      */
     public function edit(User $user)
     {
-        //retourne lq view de modification d'un utilisateur
+        //retourne la view de modification d'un utilisateur
 
         return view('admin.editUsers', compact('user'));
     }

@@ -6,7 +6,7 @@
         </header>
         <div class="card-content">
             <div class="content">
-                <p>Place concernée : {{ $reservation->place_id }}</p>
+                <p>Place concernée : {{ $reservation->place()->get(['num_place']) }}</p>
                 <hr>
                 <p>Début : {{ $reservation->date_debut }}</p>
                 <hr>

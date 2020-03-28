@@ -21,15 +21,16 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Réservations - ADMIN</div>
+                    <div class="card-header justify-content-center"><h3>Réservations Actives</h3></div>
                     <div class="card-content">
                         <div class="content">
+                            <a href="{{ route('reservations.create') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Créer</a></div>
                             <table class="table is-hoverable">
                                 <thead>
                                 <tr>
                                     <th>#</th>
                                     <th>User</th>
-                                    <th></th>
+                                    <th>Place</th>
                                     <th></th>
                                     <th></th>
                                 </tr>
@@ -40,6 +41,7 @@
                                     <tr>
                                         <td>{{ $reservation->id }}</td>
                                         <td><strong>{{ $reservation->users_id }}</strong></td>
+                                        <td>{{ $reservation->place()->get(['num_place']) }}</td>
 
                                         <!-- méthode route génère une url et est accompagnée d'un paramètre -->
 

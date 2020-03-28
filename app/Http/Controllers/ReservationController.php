@@ -18,6 +18,7 @@ class ReservationController extends Controller
      */
     public function __construct()
     {
+        $this->middleware('auth',['only' => ['create','store']]);
         //$this->middleware('admin');
     }
 
@@ -30,7 +31,7 @@ class ReservationController extends Controller
     {
         //retourne la liste de toutes les réservations
 
-        $listeReservation=Reservation::where('date_fin','<',now())->paginate(5);
+        $listeReservation=Reservation::where('date_fin','>',now())->paginate(5);
 
         return view('admin.reservation')->with('listeReservation',$listeReservation);
     }
@@ -47,7 +48,6 @@ class ReservationController extends Controller
         if ($place = Place::where('disponible',1)->get('id')){
         Reservation::create([
             'users_id'=>Auth::user()->id,
-           //'place_id'=>$place->length(),
             'place_id'=>$place[0]->id,
             'date_debut'=>now(),
             'date_fin'=> now()->modify('+1 month')
