@@ -43,6 +43,7 @@ Route::resource('places', 'PlaceController');
 
 Route::resource('users', 'UsersController');
 
+
 //route pour accèder à la page contact
 
 Route::get('/contact', function () {

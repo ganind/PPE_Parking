@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 @section('title', 'Places')
 @section('content')
@@ -32,7 +33,13 @@
                                         <td>{{ $place->num_place }}</td>
                                         <td><strong>{{ $place->disponible }}</strong></td>
                                         <td>
+                                            <form action="{{ route('places.destroy' , $place->id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="button is-danger" type="submit">Supprimer</button>
+                                        </form>
                                         </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>

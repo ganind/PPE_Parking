@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Auth;
+
 
 class UsersController extends Controller
 {
@@ -93,8 +95,12 @@ class UsersController extends Controller
         //execute la rêquete de modification d'un utilisateur
 
         $user->update($request->all());
+        //$user->save();
+
 
         return redirect()->route('users.index')->with('info','L utilisateur a bien été modifiée.');
+
+
     }
 
     /**

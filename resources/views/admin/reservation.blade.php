@@ -41,7 +41,7 @@
                                     <tr>
                                         <td>{{ $reservation->id }}</td>
                                         <td><strong>{{ $reservation->users_id }}</strong></td>
-                                        <td>{{ $reservation->place()->get(['num_place']) }}</td>
+                                        <td>{{ $reservation->place()->get(['num_place'])}}</td>
 
                                         <!-- méthode route génère une url et est accompagnée d'un paramètre -->
 

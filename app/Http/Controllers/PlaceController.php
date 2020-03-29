@@ -29,4 +29,20 @@ class PlaceController extends Controller
 
         return view('admin.places')->with('listePlaces',$listePlaces);
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Place $place
+     * @return \Illuminate\Http\Response
+     * @throws \Exception
+     */
+    public function destroy(Place $place)
+    {
+        $place->delete();
+
+        return back()->with('info', 'La place a bien été supprimée.');
+
+
+    }
 }
