@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Place;
+use Exception;
 
 
 class PlaceController extends Controller
@@ -35,10 +36,11 @@ class PlaceController extends Controller
      *
      * @param \App\Place $place
      * @return \Illuminate\Http\Response
-     * @throws \Exception
+     * @throws Exception
      */
     public function destroy(Place $place)
     {
+
         $place->delete();
 
         return back()->with('info', 'La place a bien été supprimée.');
