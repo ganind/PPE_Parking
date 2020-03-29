@@ -17,7 +17,7 @@
                     <div class="field">
                         <label class="label">Nom</label>
                         <div class="control">
-                            <input class="input" type="text" name="nom" value="{{ old('nom', $user->name) }}">
+                            <input class="input" type="text" name="name" value="{{ old('name', $user->name) }}">
                         </div>
                     </div>
                     <div class="field">
