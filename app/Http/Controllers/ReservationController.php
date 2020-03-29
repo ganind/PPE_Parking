@@ -90,6 +90,24 @@ class ReservationController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     * @param \App\User $user
+     * @param  \App\Reservation  $reservation
+     * @return \Illuminate\Http\Response
+     */
+    public function history()
+    {
+        //retoune l'historique de réservations par utilisateur
+
+        $user = (Auth::user()->id);
+
+        $listeReservation=Reservation::where('users_id','=',$user)->paginate(5);
+
+        return view('user.historique')->with('listeReservation', $listeReservation);
+    }
+
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Reservation  $reservation

@@ -33,7 +33,7 @@ Route::resource('reservations', 'ReservationController');
 
 //route pour afficher historique
 
-Route::get('/historique','ReservationController@show');
+Route::get('/historique','ReservationController@history');
 
 //route pour afficher les places
 

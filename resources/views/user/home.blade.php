@@ -32,7 +32,7 @@
                             Bienvenue,  {{ Auth::user()->name }}. <p> Que souhaitez-vous faire ? </p>
                             <a class="button is-info" href="{{ route('reservations.create') }}">Réserver une Place</a>
                             <br>
-                            <a class="button is-info" href="{{ route('reservations.index') }}">Historique</a>
+                            <a class="button is-info" href="{{ url('/historique') }}">Historique</a>
                             <br>
                         <br>
                     </div>

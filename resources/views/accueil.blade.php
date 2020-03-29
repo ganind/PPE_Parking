@@ -63,8 +63,9 @@
             @if (Auth::check())
                 <a href="{{ url('/home') }}">Home</a>
             @else
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
+                <a href="{{ url('/login') }}">Mon espace</a>
+                <a href="{{ url('/register') }}">Inscription</a>
+                <a href="{{ url('/contact') }}">Un problème ?</a>
             @endif
         </div>
     @endif
@@ -73,7 +74,10 @@
         <div class="title m-b-md">
             Parking
         </div>
-        <?php
+        Bienvenue sur le site de gestion de places de parking de la Maison de Ligues !
+    <br>
+        <br>
+    <?php
         $mytime = Carbon\Carbon::now();
         echo $mytime->toDateTimeString();
         ?>
