@@ -28,7 +28,10 @@ class AttenteController extends Controller
     {
         // retourne la liste d'attente
 
-        return view('admin.attente');
+        $listeAttente = Attente::paginate(5);
+
+        return view('admin.attente')->with('listeAttente',$listeAttente);
+
     }
 
     /**
@@ -38,13 +41,7 @@ class AttenteController extends Controller
      */
     public function create()
     {
-        //créer une réservation dans la liste d'attente
-
-            Attente::create([
-                'users_id'=>Auth::user()->id
-                ]);
-
-            return redirect()->route('home')->with('info','Vous êtes en Liste d Attente');
+        //
     }
 
     /**
