@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Attente;
+use App\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AttenteController extends Controller
 {
@@ -24,7 +26,9 @@ class AttenteController extends Controller
      */
     public function index()
     {
-        //
+        // retourne la liste d'attente
+
+        return view('admin.attente');
     }
 
     /**
@@ -34,7 +38,13 @@ class AttenteController extends Controller
      */
     public function create()
     {
-        //
+        //créer une réservation dans la liste d'attente
+
+            Attente::create([
+                'users_id'=>Auth::user()->id
+                ]);
+
+            return redirect()->route('home')->with('info','Vous êtes en Liste d Attente');
     }
 
     /**

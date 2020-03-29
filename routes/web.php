@@ -43,6 +43,10 @@ Route::resource('places', 'PlaceController');
 
 Route::resource('users', 'UsersController');
 
+//route pour liste d'attente
+
+Route::resource('attente', 'AttenteController');
+
 //route pour accèder à la page contact
 
 Route::get('/contact', function () {

@@ -28,4 +28,8 @@ class reservation extends Model
     public function place() {
         return $this->belongsTo('App\Place');
     }
+
+    public function attente() {
+        return $this->belongsTo('App\Attente');
+    }
 }

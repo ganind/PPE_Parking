@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Place;
 use App\Reservation;
 use App\User;
+use App\Attente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -43,26 +44,34 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //création d'une réservation
+        //création d'une réservation après vérification de places dispos
 
-        if ($place = Place::where('disponible',1)->get('id')){
-        Reservation::create([
-            'users_id'=>Auth::user()->id,
-            'place_id'=>$place[0]->id,
-            'date_debut'=>now(),
-            'date_fin'=> now()->modify('+1 month')
-        ]);
+        $place = Place::where('disponible',1)->get('id');
+            if (count($place) > 0)  {
+                Reservation::create([
+                'users_id'=>Auth::user()->id,
+                'place_id'=>$place[0]->id,
+                'date_debut'=>now(),
+                'date_fin'=> now()->modify('+1 month')
+            ]);
 
-        // update de la disponibilité sur la table Place
+        //update de la disponibilité sur la table Place
 
-        Place::where('id',$place[0]->id)->update(['disponible'=>0]);
+            Place::where('id',$place[0]->id)->update(['disponible'=>0]);
 
             return redirect()->route('home')->with('info','La réservation a bien été créée');
 
-        } else {
+            } else {
+                //créer une réservation dans la liste d'attente
 
-            return redirect()->route('home')->with('info','Vous êtes en Liste d Attente');
-        }
+                Attente::create([
+                    'users_id'=>Auth::user()->id
+                ]);
+
+             return redirect()->route('home')->with('info','Votre demande est en liste d attente');
+
+            //return route('Attente.php');
+            }
     }
 
     /**
@@ -105,7 +114,6 @@ class ReservationController extends Controller
 
         return view('user.historique')->with('listeReservation', $listeReservation);
     }
-
 
     /**
      * Show the form for editing the specified resource.
