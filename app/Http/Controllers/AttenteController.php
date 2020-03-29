@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Attente;
+use App\Reservation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AttenteController extends Controller
 {
@@ -24,7 +26,12 @@ class AttenteController extends Controller
      */
     public function index()
     {
-        //
+        // retourne la liste d'attente
+
+        $listeAttente = Attente::paginate(5);
+
+        return view('admin.attente')->with('listeAttente',$listeAttente);
+
     }
 
     /**

@@ -63,7 +63,7 @@
             @if (Auth::check())
                 <a href="{{ url('/home') }}">Home</a>
             @else
-                <a href="{{ url('/login') }}">Mon espace</a>
+                <a href="{{ url('/login') }}">Connexion</a>
                 <a href="{{ url('/register') }}">Inscription</a>
                 <a href="{{ url('/contact') }}">Un problème ?</a>
             @endif

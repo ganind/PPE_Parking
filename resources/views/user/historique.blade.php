@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">HISTORIQUE - USER</div>
+                    <div class="card-header justify-content-center"><strong> Historique de {{ Auth::user()->name }}</strong></div>
                     <div class="card-content">
                         <div class="content">
                             <table class="table is-hoverable">
@@ -26,7 +26,7 @@
                                 <!--boucle foreach pour afficher toutes les reservations effectuées par l'user-->
                                 @foreach($listeReservation as $reservation)
                                     <tr>
-                                        <td>{{ $reservation->place_id }}</td>
+                                        <td>{{ $reservation->place()->get(['num_place']) }}</td>
                                         <td>{{ $reservation->date_debut }}</td>
                                         <td>{{ $reservation->date_fin }}</td>
                                     </tr>

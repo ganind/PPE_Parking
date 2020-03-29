@@ -27,7 +27,7 @@
                     <div class="card-header justify-content-center"><h3>Liste d'Utilisateurs</h3></div>
                     <div class="card-content">
                         <div class="content">
-                            <a href="{{ route('users.create') }}" class="btn btn-secondary btn-lg"role="button" aria-pressed="true">Créer</a>
+                            <a href="{{ route('users.create') }}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Créer</a>
                             <br>
                             <table class="table is-hoverable">
                                 <br>

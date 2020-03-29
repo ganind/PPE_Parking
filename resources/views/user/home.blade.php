@@ -22,14 +22,17 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Tableau de Bord - USER</div>
+                    <div class="card-header justify-content-center"><strong>Bienvenue,  {{ Auth::user()->name }}.</strong></div>
                     <div class="card-body">
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
                             </div>
                         @endif
-                            Bienvenue,  {{ Auth::user()->name }}. <p> Que souhaitez-vous faire ? </p>
+
+                            Que souhaitez-vous faire ?
+                            <br>
+                            <br>
                             <a class="button is-info" href="{{ route('reservations.create') }}">Réserver une Place</a>
                             <br>
                             <a class="button is-info" href="{{ url('/historique') }}">Historique</a>
