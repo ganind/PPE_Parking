@@ -21,10 +21,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header justify-content-center"><h3>Réservations Actives</h3></div>
+                    <div class="card-header justify-content-center"><h4>Réservations Actives</h4></div>
                     <div class="card-content">
                         <div class="content">
-                            <a href="{{ route('reservations.create') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Créer</a></div>
+                            <div class="card-header-title justify-content-end"><a href="{{ route('reservations.create') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Créer une Réservation</a></div>
                             <table class="table is-hoverable">
                                 <thead>
                                 <tr>

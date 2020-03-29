@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header justify-content-center"><h3>Espace Administrateur</h3></div>
+                    <div class="card-header justify-content-center"><h4>Espace Administrateur</h4></div>
 
                     <div class="card-body">
 

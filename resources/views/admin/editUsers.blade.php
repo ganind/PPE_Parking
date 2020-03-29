@@ -5,9 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title">Modification d'un Utilisateur - ADMIN</p>
-                    </header>
+                    <header class="card-header justify-content-center"><h4>Modification d'Utilisateur</h4></header>
 
                      <div class="card-content">
                         <div class="content">
@@ -17,7 +15,7 @@
                     <div class="field">
                         <label class="label">Nom</label>
                         <div class="control">
-                            <input class="input" type="text" name="nom" value="{{ old('nom', $user->name) }}">
+                            <input class="input" type="text" name="name" value="{{ old('name', $user->name) }}">
                         </div>
                     </div>
                     <div class="field">

@@ -70,7 +70,6 @@ class ReservationController extends Controller
 
              return redirect()->route('home')->with('info','Votre demande est en liste d attente');
 
-            //return route('Attente.php');
             }
     }
 

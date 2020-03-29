@@ -12,7 +12,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header justify-content-center"><h3>Liste d'attente</h3></div>
+                    <div class="card-header justify-content-center"><h4>Liste d'attente</h4></div>
                     <div class="card-content">
                         <table class="table is-hoverable">
                             <br>

@@ -43,6 +43,5 @@ class PlaceController extends Controller
 
         return back()->with('info', 'La place a bien été supprimée.');
 
-
     }
 }

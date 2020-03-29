@@ -24,11 +24,10 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header justify-content-center"><h3>Liste d'Utilisateurs</h3></div>
+                    <div class="card-header justify-content-center"><h4>Liste d'Utilisateurs</h4></div>
                     <div class="card-content">
                         <div class="content">
-                            <a href="{{ route('users.create') }}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Créer</a>
-                            <br>
+                            <div class="card-header-title justify-content-end"><a href="{{ route('users.create') }}" class="btn btn-secondary btn-lg" role="button" aria-pressed="true">Créer un Utilisateur</a></div>
                             <table class="table is-hoverable">
                                 <br>
                                 <thead>

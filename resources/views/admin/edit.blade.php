@@ -5,7 +5,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <header class="card-header">
-                        <p class="card-header-title">Modification d'une Réservation - ADMIN</p>
+                        <div class="card-header-title justify-content-center"><h4>Modification de Réservation</h4></div>
                     </header>
 
             <div class="card-content">

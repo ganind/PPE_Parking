@@ -95,12 +95,8 @@ class UsersController extends Controller
         //execute la rêquete de modification d'un utilisateur
 
         $user->update($request->all());
-        //$user->save();
-
 
         return redirect()->route('users.index')->with('info','L utilisateur a bien été modifiée.');
-
-
     }
 
     /**
