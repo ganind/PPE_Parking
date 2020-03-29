@@ -2,11 +2,6 @@
 
 @section('css')
     <style>
-        .card-footer {
-            justify-content: center;
-            align-items: center;
-            padding: 0.4em;
-        }
         .is-info {
             margin: 0.3em;
         }
@@ -36,7 +31,6 @@
                             <br>
                             <a class="button is-info" href="{{ route('reservations.create') }}">Réserver une Place</a>
                             <a class="button is-info" href="{{ url('/historique') }}">Historique</a>
-
                             <br>
                     </div>
                 </div>

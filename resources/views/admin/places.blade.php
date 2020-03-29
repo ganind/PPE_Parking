@@ -13,7 +13,6 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header justify-content-center"><h4>Liste de Places</h4></div>
-                    <div class="card-header-title justify-content-end"><a href="{{ route('places.create') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Créer une Place</a></div>
                     <div class="card-content">
                         <div class="content">
                             <table class="table is-hoverable">
@@ -32,6 +31,7 @@
                                     <tr>
                                         <td>{{ $place->num_place }}</td>
                                         <td><strong>{{ $place->disponible }}</strong></td>
+                                        <td><a class="button is-warning" href="{{ route('places.edit', $place->id) }}">Modifier</a></td>
                                         <td>
                                             @if($place->disponible == 1 )
                                             <form action="{{ route('places.destroy' , $place->id) }}" method="post">
