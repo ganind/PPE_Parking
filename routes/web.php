@@ -33,11 +33,15 @@ Route::resource('reservations', 'ReservationController');
 
 //route pour afficher historique
 
-Route::get('/historique','ReservationController@show');
+Route::get('/historique','ReservationController@history');
 
 //route pour afficher les places
 
 Route::resource('places', 'PlaceController');
+
+//route pour les utilisateurs
+
+Route::resource('users', 'UsersController');
 
 //route pour accèder à la page contact
 
@@ -50,23 +54,19 @@ Route::get('/contact', function () {
 Route::get('contact', 'ContactController@create');
 Route::post('contact', 'ContactController@store');
 
-//route pour les utilisateurs
-
-Route::get('users', 'UsersController@create');
-Route::post('users', 'UsersController@store');
 
 //routes pour les pages admin
 
-Route::group(['prefix' => 'admin'], function() {
+/*Route::group(['prefix’' => 'admin'], function() {
 
-    Route::get('users', function () {  });
+    Route::get('users', 'UsersController@index');
     Route::get('users/{id}', function ($id) { });
     Route::get('users/create', function () { });
     Route::get('logs', function () { });
 
 }); //->middleware('admin')
 
-/*Les groupes de routes permettent de déclarer une liste de routes
+Les groupes de routes permettent de déclarer une liste de routes
 partageant un préfixe commun (en l’occurrence admin) à l’aide de
 la méthode Route::group et de la propriété prefix.
 Pour éviter de répéter admin pour chacune des routes d’administration.

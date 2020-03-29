@@ -11,15 +11,15 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Votre Tableau de Bord - PLACES</div>
-                    <p class="card-header-title">Places</p>
+                    <div class="card-header justify-content-center"><h3>Liste de Places</h3></div>
+                    <div class="card-header-title justify-content-end"><a href="{{ route('places.create') }}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Créer</a></div>
                     <div class="card-content">
                         <div class="content">
                             <table class="table is-hoverable">
                                 <thead>
                                 <tr>
-                                    <th>Place</th>
-                                    <th>Disponibilité</th>
+                                    <th><h5>Place</h5></th>
+                                    <th><h5>Disponibilité</h5></th>
                                     <th></th>
                                     <th></th>
                                     <th></th>

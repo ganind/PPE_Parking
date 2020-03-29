@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Place;
-use App\Reservation;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+
 
 class PlaceController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -20,6 +27,6 @@ class PlaceController extends Controller
 
         $listePlaces=Place::all();
 
-        return view('places')->with('listePlaces',$listePlaces);
+        return view('admin.places')->with('listePlaces',$listePlaces);
     }
 }

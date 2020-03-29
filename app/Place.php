@@ -21,6 +21,7 @@ class Place extends Model
 
     //définir relation entre le modèle Reservation
     //une place peut contenir plusieurs réservations, mais pas au même temps
+
     public function reservation() {
 
         return $this->hasMany('App\Reservation');

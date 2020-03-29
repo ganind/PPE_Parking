@@ -2,15 +2,15 @@
 @section('content')
     <div class="card">
         <header class="card-header">
-            <p class="card-header-title">Réservation : {{ $reservation->id }}</p>
+            <p class="card-header-title">Utilisateur : {{ $user->id }}</p>
         </header>
         <div class="card-content">
             <div class="content">
-                <p>Place concernée : {{ $reservation->place()->get(['num_place']) }}</p>
+                <p>Nom : {{ $user->name }}</p>
                 <hr>
-                <p>Début : {{ $reservation->date_debut }}</p>
+                <p>Email : {{ $user->email }}</p>
                 <hr>
-                <p>Fin : {{ $reservation->date_fin }}</p>
+                <p>Créé le:  {{ $user->created_at }}</p>
                 <hr>
             </div>
         </div>

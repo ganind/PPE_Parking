@@ -1,43 +1,37 @@
 @extends('layouts.app')
 @section('content')
-    <div class="card">
-        <header class="card-header">
-            <p class="card-header-title">Modification d'une réservation - USER</p>
-        </header>
-        <div class="card-content">
-            <div class="content">
-                <form action="{{ route('reservations.update', $reservation->id) }}" method="POST">
-                    @csrf
-                    @method('put')
-                    <div class="field">
-                        <label class="label">Place</label>
-                        <div class="control">
-                            <input class="input" type="number" name="place" value="{{ old('place_id', $reservation->place_id) }}">
-                        </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Modifier un utilisateur</div>
+                    <div class="panel-body">
+                        <form class="form-horizontal" method="POST" action="{{ route('users.update', $user->id) }}">
+                            {{ csrf_field() }}
+                            {{ method_field('PUT') }}
+                            <div class="form-group">
+                                <label for="name" class="col-md-4 control-label">Nom</label>
+                                <div class="col-md-6">
+                                    <input id="name" type="text" class="form-control" name="name" value="{{ $user->name }}" required autofocus>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="col-md-4 control-label">E-Mail</label>
+                                <div class="col-md-6">
+                                    <input id="email" type="email" class="form-control" name="email" value="{{ $user->email }}" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-8 col-md-offset-4">
+                                    <button type="submit" class="btn btn-primary">
+                                        Enregistrer
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-                    <div class="field">
-                        <label class="label">Début</label>
-                        <div class="control">
-                            <input type="date" name="date_debut" value="{{ old('date_debut', $reservation->date_debut) }}" max="{{ date('timestamp:int') }}">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label class="label">Fin</label>
-                        <div class="control">
-                            <input type="date" name="date_fin" value="{{ old('date_fin', $reservation->date_fin) }}" min="2000" max="{{ date('timestamp:int') }}">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="control">
-                            <button class="button is-link">Envoyer</button>
-                        </div>
-                        <p class="control">
-                            <a class="button is-link">Cancel</a>
-                        </p>
-                    </div>
-                </form>
+                </div>
             </div>
         </div>
     </div>
 @endsection
-
