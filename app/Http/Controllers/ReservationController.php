@@ -44,33 +44,44 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        //création d'une réservation après vérification de places dispos
+        //création d'une réservation après vérification de l'id user et places dispos
 
-        $place = Place::where('disponible',1)->get('id');
-            if (count($place) > 0)  {
+        if (Reservation::where([
+            ['users_id', '=', Auth::user()->id],
+            ['date_fin', '>', now()]
+        ])) {
+            return redirect()->route('home')->with('info', "Vous avez déjà une réservation en cours !");
+
+        } else {
+
+            $place = Place::where('disponible', 1)->get('id');
+            if (count($place) > 0) {
                 Reservation::create([
-                'users_id'=>Auth::user()->id,
-                'place_id'=>$place[0]->id,
-                'date_debut'=>now(),
-                'date_fin'=> now()->modify('+1 month')
-            ]);
+                    'users_id' => Auth::user()->id,
+                    'place_id' => $place[0]->id,
+                    'date_debut' => now(),
+                    'date_fin' => now()->modify('+1 month')
+                ]);
 
-        //update de la disponibilité sur la table Place
 
-            Place::where('id',$place[0]->id)->update(['disponible'=>0]);
+                //update de la disponibilité sur la table Place
 
-            return redirect()->route('home')->with('info','La réservation a bien été créée');
+                Place::where('id', $place[0]->id)->update(['disponible' => 0]);
+
+                return redirect()->route('home')->with('info', 'La réservation a bien été créée');
+
 
             } else {
                 //créer une réservation dans la liste d'attente
 
                 Attente::create([
-                    'users_id'=>Auth::user()->id
+                    'users_id' => Auth::user()->id
                 ]);
 
-             return redirect()->route('home')->with('info','Votre demande est en liste d attente');
+                return redirect()->route('home')->with('info', 'Votre demande est en liste d attente');
 
             }
+        }
     }
 
     /**

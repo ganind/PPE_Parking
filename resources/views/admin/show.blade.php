@@ -17,7 +17,7 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-8 col-md-offset-4">
-                            <button type="submit" class="btn btn-primary" href="{{ route('reservations.edit', $reservation->id) }}">Modifier</button>
+                            <a class="btn btn-primary" href="{{ route('reservations.edit', $reservation->id) }}">Modifier</a>
                             <a class="btn btn-primary" href="{{ url('/reservations') }}">Retour</a>
                         </div>
                     </div>

@@ -42,7 +42,7 @@
                                     <tr>
                                         <td>{{ $reservation->id }}</td>
                                         <td><strong>{{ $reservation->users_id }}</strong></td>
-                                        <td>{{ $reservation->num_place}}</td>
+                                        <td>{{ $reservation->place()->get(['num_place']) }}</td>
                                         <!-- méthode route génère une url et est accompagnée d'un paramètre -->
 
                                         <td><a class="button is-primary" href="{{ route('reservations.show', $reservation->id) }}">Voir</a></td>
